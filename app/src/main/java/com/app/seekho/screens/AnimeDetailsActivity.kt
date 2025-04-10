@@ -115,11 +115,12 @@ class AnimeDetailsActivity : AppCompatActivity() {
     }
 
     private fun updateUI(genres: ArrayList<Genre>) {
-        val stringList = ArrayList<String>()
-        for (i in genres){
-            stringList.add(i.type)
+        for (i in 0 until genres.size){
+            if (i == genres.size-1)
+                animeDetailsBinding.genre.append(genres.get(i).type)
+            else
+                animeDetailsBinding.genre.append(genres.get(i).type+",")
         }
-        animeDetailsBinding.genre.text = stringList.toString().replace("[","").replace("]","")
         if (videoId=="null"){
             animeDetailsBinding.posterImage.visibility= View.VISIBLE
             animeDetailsBinding.youtubePlayerView.visibility=View.GONE
